@@ -60,6 +60,11 @@ class ScreenHome extends StatelessWidget {
                         }).toList();
                         trendingNow.shuffle();
 
+                        final top10TvShows = state.trendingTvList.map((t) {
+                          return "$ImageAppendUrl${t.posterPath}";
+                        }).toList();
+                        top10TvShows.shuffle();
+
                         final tenseDrama = state.tenseDramaMovieList.map((m) {
                           return "$ImageAppendUrl${m.posterPath}";
                         }).toList();
@@ -74,22 +79,34 @@ class ScreenHome extends StatelessWidget {
                           children: [
                             const BackGroundCard(),
                             MainTitleCard(
-                                title: 'Released This Year',
-                                posterList: releasedPastYear),
+                              title: 'Released This Year',
+                              posterList: releasedPastYear.length >= 10
+                                  ? releasedPastYear.sublist(0, 10)
+                                  : releasedPastYear,
+                            ),
                             MainTitleCard(
                               title: 'Trending Now',
-                              posterList: trendingNow,
+                              posterList: trendingNow.length >= 10
+                                  ? trendingNow.sublist(0, 10)
+                                  : trendingNow,
                             ),
                             numbercardwidget(
                               title: 'Top 10 Shows',
+                              posterList: top10TvShows.length >= 10
+                                  ? top10TvShows.sublist(0, 10)
+                                  : top10TvShows,
                             ),
                             MainTitleCard(
                               title: 'Popular Movies',
-                              posterList: tenseDrama,
+                              posterList: tenseDrama.length >= 10
+                                  ? tenseDrama.sublist(0, 10)
+                                  : tenseDrama,
                             ),
                             MainTitleCard(
                               title: 'Most Viewed',
-                              posterList: SouthIndian,
+                              posterList: SouthIndian.length >= 10
+                                  ? SouthIndian.sublist(0, 10)
+                                  : SouthIndian,
                             ),
                             kheight10
                           ],
@@ -120,11 +137,7 @@ class ScreenHome extends StatelessWidget {
                                       size: 30,
                                     ),
                                     kwidth,
-                                    Container(
-                                      width: 30,
-                                      height: 30,
-                                      color: Colors.blue,
-                                    ),
+                                const    CharachterContainer(charachterImage: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&s=30",),
                                     kwidth,
                                   ],
                                 ),
@@ -155,5 +168,25 @@ class ScreenHome extends StatelessWidget {
                 ),
               );
             }));
+  }
+}
+
+class CharachterContainer extends StatelessWidget {
+  const CharachterContainer({
+    super.key, required this.charachterImage,
+  });
+  final String charachterImage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 30,
+      height: 30,
+      decoration: BoxDecoration(
+        image: DecorationImage(image: NetworkImage(
+         charachterImage
+      ))
+      ),
+    );
   }
 }

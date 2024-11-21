@@ -5,9 +5,10 @@ import 'package:bordered_text/bordered_text.dart';
 class Numbercard extends StatelessWidget {
   const Numbercard({
     super.key,
-    required this.index,
+    required this.index, required this.imageUrl,
   });
   final int index;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +26,12 @@ class Numbercard extends StatelessWidget {
             Container(
               alignment: Alignment.topLeft,
               width: 150,
-              height: 200,
+              height: 190,
               decoration: BoxDecoration(
                   borderRadius: kBradius18,
-                  image: const DecorationImage(
+                  image:  DecorationImage(
                       image: NetworkImage(
-                          'https://image.tmdb.org/t/p/w220_and_h330_face/34xBL6BXNYFqtHO9zhcgoakS4aP.jpg'))),
+                          imageUrl))),
             ),
           ],
         ),

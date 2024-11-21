@@ -27,6 +27,7 @@ class CustomButton extends StatelessWidget {
           icon,
           color: kWhiteColor,
           size: Iconsize,
+          weight: 20,
         ),
         SizedBox(
           height: divisionheight,
@@ -34,7 +35,8 @@ class CustomButton extends StatelessWidget {
         Text(
           title,
           style: TextStyle(
-              fontSize: Textsize, color: Textcolor, letterSpacing: Textspacing),
+              fontSize: Textsize, color: Textcolor, letterSpacing: Textspacing,
+              fontWeight: FontWeight.bold),
         )
       ],
     );

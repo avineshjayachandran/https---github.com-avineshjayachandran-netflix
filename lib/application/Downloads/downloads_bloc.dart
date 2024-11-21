@@ -22,17 +22,27 @@ class DownloadsBloc extends Bloc<DownloadsEvent, DownloadsState> {
         isloading: true,
         downloadFailureOrSuccessOption: none(),
       ));
+      print('fetching downloads..');
+
       final Either<MainFailure, List<ModelDownloads>> downloadsOption =
           await _downloadsRepo.getDownloadImage();
-      print(downloadsOption.toString());
-      emit(downloadsOption.fold(
-          (failure) => state.copyWith(
+
+      print("Repository result: $downloadsOption");
+
+      emit(
+        downloadsOption.fold((failure) {
+          print("Error occurred : $failure");
+          return state.copyWith(
               isloading: false,
-              downloadFailureOrSuccessOption: some(left(failure))),
-          (success) => state.copyWith(
+              downloadFailureOrSuccessOption: some(left(failure)));
+        }, (success) {
+          print("Success ! Download fetched : ${success.length}");
+          return state.copyWith(
               isloading: false,
               downloads: success,
-              downloadFailureOrSuccessOption: some(right(success)))));
+              downloadFailureOrSuccessOption: some(right(success)));
+        }),
+      );
     });
   }
 }
