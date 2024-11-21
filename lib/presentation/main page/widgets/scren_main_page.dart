@@ -7,10 +7,10 @@ import 'package:netflix/presentation/main%20page/widgets/bottom_nav.dart';
 import 'package:netflix/presentation/new_and_hot/screen_new_and_hot.dart';
 import 'package:netflix/presentation/search/screen_search.dart';
 
-class ScrrenMainPage extends StatelessWidget {
-  ScrrenMainPage({super.key});
+class ScreenMainPage extends StatelessWidget {
+  ScreenMainPage({super.key});
 
-  final _pages = const [
+  final _pages = [
     ScreenHome(),
     ScreenNewAndHot(),
     ScreenFastLaugh(),

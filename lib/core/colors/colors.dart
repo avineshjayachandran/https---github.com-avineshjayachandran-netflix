@@ -4,7 +4,7 @@ const BackgroundColor = Colors.black;
 
 const kWhiteColor = Colors.white;
 
-const kButtonColorBlue = Colors.blue;
+final kButtonColorBlue = const Color.fromARGB(255, 119, 150, 236);
 
 const KButtonColorWhite = Colors.white;
 

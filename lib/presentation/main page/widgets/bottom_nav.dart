@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
- ValueNotifier<int> IndexChangeNotiifer = ValueNotifier(0);
+ValueNotifier<int> IndexChangeNotiifer = ValueNotifier(0);
 
 class BottomNavigationBarWidget extends StatelessWidget {
-   BottomNavigationBarWidget({super.key});
-
- 
+  BottomNavigationBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
